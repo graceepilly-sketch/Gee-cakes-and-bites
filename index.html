@@ -13,34 +13,77 @@
     body {
       margin: 0;
       font-family: 'Arial', sans-serif;
-      background-color: #b8860b;
+      background-color: whitesmoke;
       color: #4b2e2e;
       max-width: 1200px;
       margin-left: auto;
       margin-right: auto;
     }
     h2 { color: #b8860b; text-align: center; margin: 40px 0 20px; }
-
+ header{background:#f28db2;color:#fff;padding:20px;position:fixed;top:0;width:100%;z-index:100;}
+    header h1{margin:0;font-size:2em;}
     /* Navbar */
     nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background-color: #8b4513;
+      background-color: #f28db2;
       padding: 10px 50px;
       position: sticky;
+      margin-top:10px;
       top: 0;
       z-index: 100;
     }
-    nav .logo { font-size: 24px; font-weight: bold; color: #ffd700; }
-     nav .logo img { font-size: 24px; font-weight: bold; color: #ffd700;
+    nav .logo { font-size: 24px; font-weight: bold; color: #f28db2; }
+     nav .logo img { font-size: 24px; font-weight: bold; color: #f28db2;
     width: 80px;       /* ongeza au punguza size unavyotaka */
   height: 80px;      /* tumia same value na width kwa perfect circle */
   border-radius: 50%; /* hii inafanya logo kuwa circle */
   object-fit: cover;}
     nav ul { list-style: none; display: flex; gap: 30px; align-items: center; margin:0; padding:0; }
-    nav ul li a { text-decoration: none; color: #ffd700; font-weight: bold; transition: color 0.3s; }
+    nav ul li a { text-decoration: none; color: white; font-weight: bold; transition: color 0.3s; }
     nav ul li a:hover { color: #fff; }
+    /* Dropdown container */
+.dropdown {
+  position:relative;
+  display:inline-block;
+}
+
+.dropdown-content{
+  display:none;
+  position:absolute;
+  background: #f28db2;
+  min-width:160px;
+  box-shadow:0 4px 8px rgba(0,0,0,0.2);
+  border-radius:5px;
+  z-index:10;
+}
+
+.dropdown-content a{
+  color:#333;
+  padding:10px 15px;
+  display:block;
+}
+
+.dropdown-content a:hover{
+  background: #f28db2;
+  color:#fff;
+}
+
+/* Show dropdown on hover */
+.dropdown:hover .dropdown-content{
+  display:block;
+}
+
+/* Hover effect for dropbtn */
+.dropdown:hover .dropbtn{
+  background:white;
+}
+
+/* Responsive toggle */
+.navbar .icon{
+  display:none;
+}
 
     /* Slideshow */
     .slideshow { position: relative; max-width: 100%; height: 400px; overflow: hidden; margin: 40px auto; border-radius: 15px; box-shadow:0 8px 20px rgba(0,0,0,0.3); }
@@ -48,7 +91,7 @@
 
     /* Products */
     .products-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; padding:0 20px; justify-items: center; }
-    .product { border:2px solid #b8860b; border-radius:10px; overflow:hidden; text-align:center; cursor:pointer; transition:transform 0.3s, box-shadow 0.3s; background-color:#fff0e0; }
+    .product { border:2px solid #f28db2; border-radius:10px; overflow:hidden; text-align:center; cursor:pointer; transition:transform 0.3s, box-shadow 0.3s; background-color:#fff0e0; }
     .product img { width:100%; height:200px; object-fit:cover; }
     .product p { padding:10px; font-weight:bold; color:#4b2e2e; }
     .product:hover { transform:scale(1.05); box-shadow:0 8px 15px rgba(0,0,0,0.3); }
@@ -79,12 +122,17 @@
   margin-bottom: 10px;
 }
     /* Order Form */
-    .order-form { max-width:600px; margin:40px auto; padding:20px; background-color:#8b4513; border:2px solid #b8860b; border-radius:10px; }
+    .order-form { max-width:600px; margin:40px auto; padding:20px; background-color:#a13059 border:2px solid #b8860b; border-radius:10px; }
     .order-form form { display:flex; flex-direction:column; gap:15px; }
     .order-form label { font-weight:bold; }
-    .order-form input { padding:10px; border-radius:5px; border:1px solid #b8860b; }
-    .order-form button { padding:12px; background-color:#b8860b; color:#fff; font-weight:bold; border:none; border-radius:5px; cursor:pointer; transition:0.3s; }
-    .order-form button:hover { background-color:#8b4513; }
+    .order-form input { padding:10px; border-radius:5px; border:1px solid #a13059; }
+    .order-form button { padding:12px; background-color:#a13059; color:#fff; font-weight:bold; border:none; border-radius:5px; cursor:pointer; transition:0.3s; }
+    .order-form button:hover { background-color:#a13059; }
+
+    /*about us */
+    #About us { text-align:center; padding:40px 20px; background-color:white }
+    #About us  { margin:10px 0; }
+    .iframe{width:100%;height:300px;border:0;border-radius:10px;margin-top:15px;}
 
     /* Contact */
     #contact { text-align:center; padding:40px 20px; background-color:#f5e7d8; }
@@ -100,7 +148,7 @@
       nav ul { flex-direction:column; gap:15px; }
     }
     footer {
-  background:#b8860b;
+  background:#f28db2;
   color:#ffffff;
   padding:20px;
   text-align:center;
@@ -131,7 +179,15 @@ footer .social-media a:hover{
     <ul class="nav-links">
       <li><a href="#home">Home</a></li>
       <li><a href="#products">Bidhaa Zetu</a></li>
-      <li><a href="#services">Services</a></li>
+    <div class="dropdown">
+      <button class="dropbtn">Services ▼</button>
+      <div class="dropdown-content">
+        <a href="#Wedding Cakes">keki za ndoa</a>
+        <a href="#Birthday Cakes">Keki za Birthday</a>
+        <a href="#Cup Cakes (kwa biashara)">Keki za Chokoleta</a>
+        <a href="#Bites zote">Cupcakes</a>
+      </div>
+    </div>
       <li><a href="#order">Order Now</a></li>
       <li><a href="#contact">Contact</a></li>
       <li><a href="#About us">About us</a></li>
@@ -241,6 +297,7 @@ footer .social-media a:hover{
     <li><b>grace's delight sweet cakes niwatengenezaji wa cake tamu kwaili ya 
       sherehe mbalimbali tunawapenda wateja wetu na huduma zetu ninafuu karibu
        sana tunapatikana Tunduru mjini</b></li></ul>
+        <iframe src="https://www.google.com/maps?q=Tunduru%2C%20Ruvuma%2C%20Tanzania&output=embed" allowfullscreen loading="lazy"></iframe>
   </section>
 
   <!-- Contact Section -->
@@ -302,11 +359,3 @@ footer .social-media a:hover{
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
